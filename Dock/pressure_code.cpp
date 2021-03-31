@@ -6,13 +6,14 @@ const int PRESSURE_OUT = A3; // Pino DT
 const int PRESSURE_SCK = A4; // Pino SCK
 
 //a colocar no setup inicial no codigo da dock
+void setup_pressure(){
   pinMode(PRESSURE_SCK, OUTPUT);
   pinMode(PRESSURE_OUT, INPUT);
   // reseta o HX711
   digitalWrite(PRESSURE_SCK, 1);
   delay (200);
   digitalWrite(PRESSURE_SCK, LOW);
-
+}
 
 //float conversao( uint8_t PRESSURE_SCK, uint8_t PRESSURE_OUT){ //se for num ficheiro separado
 

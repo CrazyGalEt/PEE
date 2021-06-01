@@ -1,4 +1,4 @@
-// Detpole - André Brandão
+// Detpole
 // Humidity and Temperature  Sensor - DHT11
 // UV Sensor - GUVA-S12SD 
 

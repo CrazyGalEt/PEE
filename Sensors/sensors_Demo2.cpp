@@ -1,4 +1,4 @@
-// Detpole - André Brandão
+// Detpole
 // Humidity and Temperature  Sensor - DHT11
 // UV Sensor - GUVA-S12SD 
 
@@ -27,8 +27,8 @@ int UV_voltage = 0;
 String UV_index;
 
 // Wifi credentials 
-const char* wifi_ssid = "MEO-8160A0";
-const char* wifi_password = "240ab23ae5";
+const char* wifi_ssid = "Wifi";
+const char* wifi_password = "12345";
 
 // MQTT server IP and port
 const char* mqtt_server_ip = "192.168.1.68";

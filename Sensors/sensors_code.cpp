@@ -27,6 +27,7 @@ void compute_UV_Index();
 #define CURRENT_PIN 33		// Analog pin connected to the Current Sensor
 
 #define CURRENT_THRESHOLD 3000.0	// Current Threshold (mA) that defines if the lamp is ON/OFF
+#define LAMP_ID "1"		// ID of Lamps to publish error
 
 // DHT Sensor Variables
 float temperature = 0, humidity = 0;
@@ -198,8 +199,12 @@ void sensors_read_publish()
 
 	if(time_count >= 2) 	// Execute every 2 days --95
 	{
-		if(lamp_error)		// if lamp not working publish lamp error
-			client.publish("lamp_error", "1");
+		client.publish("lamp_id", LAMP_ID);	// Publish Lamp ID
+
+		if(lamp_error)		// if lamp error true
+			client.publish("lamp_state", "Not Working");
+		else 
+			client.publish("lamp_state", "Working");
 
 		lamp_error = true;		// reset lamp flag
 		time_count = 0;	// time_count

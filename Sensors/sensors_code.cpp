@@ -69,7 +69,6 @@ void setup()
 	Serial.begin(115200);
 	esp_task_wdt_init(2400, true);		// Set watchdog timeout (seconds) and panic handle
 
-		
 	connect_wifi();	// Connect wifi
 	
 	client.setServer(mqtt_server_ip, mqtt_server_port);

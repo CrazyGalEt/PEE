@@ -39,7 +39,7 @@ String UV_index;
 const int Nread = 500; 		// number of reads of the input value of the sensor before averages it
 unsigned int time_count = 0;
 unsigned long time_now = 0;	// auxiliar variable for creating the delay
-int period = 30000;			// interval of current measure (1 min)
+int period = 30000;			// interval of current measure (30 seconds)
 long int sensorValue = 0;
 float current = 0;
 float Scale_factor = 185.0;	// Sensor scale factor - 185 mV/A 
@@ -196,7 +196,7 @@ void sensors_read_publish()
 	client.publish("humidity", humidity_char);
 	client.publish("uv_index", uv_index_char);
 
-	if(time_count >= 2) 	// Execute every 2 days --95
+	if(time_count >= 95) 	// Execute every 2 days
 	{
 		if(lamp_error)		// if lamp not working publish lamp error
 			client.publish("lamp_error", "1");

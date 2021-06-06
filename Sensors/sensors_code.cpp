@@ -170,7 +170,7 @@ void sensors_read_publish()
 	if (isnan(humidity) || isnan(temperature))	
 	{
 	 	Serial.print("\nFailed to read from DHT sensor!\n");
-	 	//return;
+	 	return;
 	}
 
 	Serial.print("\nTemperature: ");

@@ -30,7 +30,7 @@ void compute_UV_Index();
 #define LAMP_ID "1"		// ID of Lamps to publish error
 
 // DHT Sensor Variables
-float temperature = 0, humidity = 0;
+int temperature = 0, humidity = 0;
 
 // UV Sensor Variables
 int UV_voltage = 0;
@@ -48,11 +48,11 @@ float Vref = 2166;		// Voltage (mV) with no current flowing
 bool lamp_error = true;		// Lamp error flag
 
 // Wifi credentials 
-const char* wifi_ssid = "MEO-WIFI";
-const char* wifi_password = "50centimos";
+const char* wifi_ssid = "Iphone de Ribeiro";
+const char* wifi_password = "ripmo123";
 
 // MQTT server IP and port
-const char* mqtt_server_ip = "192.168.8.100";
+const char* mqtt_server_ip = "192.168.154.33";
 const int mqtt_server_port = 1883;
 
 // MQTT user and password
@@ -158,8 +158,8 @@ void sensors_read_publish()
 {
 	time_count++;	// Incremented every 30 minutes
 
-	humidity = dht.readHumidity();			// read humidity value
-	temperature = dht.readTemperature();	// read temperature value as Celsius
+	humidity = round(dht.readHumidity());			// read humidity value
+	temperature = round(dht.readTemperature());	// read temperature value as Celsius
 	
 	delay(300);
 	UV_voltage = analogRead(UVPIN) * 5 * 1000 / 4095.0; // UV voltage mV
@@ -184,10 +184,10 @@ void sensors_read_publish()
   	Serial.print("\n");
 
 	// Convert values to a char array
-	char temperature_char[6], humidity_char[6], uv_index_char[3];
+	char temperature_char[3], humidity_char[3], uv_index_char[3];
     
-	dtostrf(temperature, 1, 2, temperature_char);
-	dtostrf(humidity, 1, 2, humidity_char);
+	itoa(temperature, temperature_char, 10);
+	itoa(humidity, humidity_char, 10);
 	UV_index.toCharArray(uv_index_char, 3);
 
 	
